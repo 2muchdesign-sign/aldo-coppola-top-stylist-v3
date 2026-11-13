@@ -121,6 +121,19 @@ section.mist{background:var(--mist)}
 .spec.hl span,.spec.hl b small{color:rgba(255,255,255,.85)}
 .note{font-size:12px;color:var(--grey);margin-top:14px;letter-spacing:.04em}
 #about .specs{margin-top:72px}
+.press{margin-top:clamp(72px,9vw,120px)}
+.press-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-top:2px solid var(--red);padding-top:14px;margin-bottom:28px}
+.press-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,52px);line-height:1;letter-spacing:-.02em;margin-top:12px}
+.press-head h3 em{color:var(--red)}
+.press-note{font-size:12px;color:var(--grey);letter-spacing:.04em}
+.press-film{position:relative;margin:0 0 24px;aspect-ratio:16/9;background:var(--ink-2);overflow:hidden;cursor:pointer}
+.press-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.press-film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.5));pointer-events:none}
+.press-film figcaption{position:absolute;z-index:2;left:24px;right:24px;bottom:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.pf-play{position:absolute;z-index:2;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:var(--red);transition:transform .3s,background .3s;box-shadow:0 20px 40px -12px rgba(0,0,0,.5)}
+.pf-play span{position:absolute;left:50%;top:50%;margin:-13px 0 0 -8px;border-left:24px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent}
+.press-film:hover .pf-play{transform:scale(1.08);background:var(--red-deep)}
+.carousel.press-photos{--ratio:2/3;--per:4}
 
 /* три колонки с линейкой */
 .conds{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 40px}
@@ -394,6 +407,7 @@ footer a{color:var(--ink)}
   .spec:nth-child(3),.ladder li:nth-child(3){border-left:0}
   .spec:nth-child(n+3){border-top:1px solid var(--ink)}
   .ladder li:nth-child(n+3){border-top:1px solid var(--ink)}
+  .carousel.press-photos{--per:2.6}
   .tl{grid-template-columns:1fr 1fr}
   .salon-row{grid-template-columns:1fr 1.4fr}
 }
@@ -414,6 +428,10 @@ footer a{color:var(--ink)}
   .deal{grid-template-columns:1fr;gap:16px;padding:26px 22px}
   .carousel.tri{--per:1.3}
   .carousel.story{--per:1.4}
+  .carousel.press-photos{--per:1.6}
+  .pf-play{width:64px;height:64px;margin:-32px 0 0 -32px}
+  .pf-play span{margin:-10px 0 0 -6px;border-left-width:18px;border-top-width:10px;border-bottom-width:10px}
+  .press-film figcaption{left:16px;right:16px;bottom:14px;font-size:10px}
   .salon-row,.salon-row.rev{grid-template-columns:1fr;gap:24px;padding:36px 0}
   .salon-row.rev .salon-txt{order:0}
   .salon-txt{position:static}
@@ -478,7 +496,7 @@ footer a{color:var(--ink)}
       <span>Москва &amp; Подмосковье</span>
       <span>Для топ-стилистов</span>
     </div>
-    <div class="masthead">Top <em>Stilista</em></div>
+    <div class="masthead">Топ-<em>стилист</em></div>
 
     <div class="cover-grid">
       <div class="coverlines">
@@ -504,7 +522,7 @@ footer a{color:var(--ink)}
       </div>
 
       <div class="cover-lead">
-        <h1>Топ-стилист <em>Aldo&nbsp;Coppola</em></h1>
+        <h1>Как мы работаем <em>с&nbsp;топ-стилистами</em> Aldo&nbsp;Coppola</h1>
         <p>Семь центров красоты в Москве, на Рублёвке и Новой Риге. Здесь работают стилисты, которым важны стабильность и творчество, кто видит своё развитие в работе на показах, глянцевых съёмках и создании образов для селебрити.</p>
         <a class="btn" href="#join">Прислать портфолио <span class="arr">→</span></a>
         <span class="kicker grey dirs-l">Два пути мастера</span>
@@ -518,8 +536,8 @@ footer a{color:var(--ink)}
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Barvikha Luxury Village</span><span>Жуковка</span><span>ТК Юнимолл</span><span>ТЦ Времена года</span><span>Лотте Отель</span><span>БЦ ВЭБ РФ</span><span>ТЦ BoscoVesna</span><span>Live-Show Milano</span>
-      <span>Barvikha Luxury Village</span><span>Жуковка</span><span>ТК Юнимолл</span><span>ТЦ Времена года</span><span>Лотте Отель</span><span>БЦ ВЭБ РФ</span><span>ТЦ BoscoVesna</span><span>Live-Show Milano</span>
+      <span>Barvikha Luxury Village</span><span>Жуковка</span><span>ТК Юнимолл</span><span>ТЦ Времена года</span><span>Лотте Отель</span><span>БЦ ВЭБ РФ</span><span>ТЦ BoscoVesna</span><span>Live-Show в Милане</span>
+      <span>Barvikha Luxury Village</span><span>Жуковка</span><span>ТК Юнимолл</span><span>ТЦ Времена года</span><span>Лотте Отель</span><span>БЦ ВЭБ РФ</span><span>ТЦ BoscoVesna</span><span>Live-Show в Милане</span>
     </div>
   </div>
 </section>
@@ -555,7 +573,7 @@ footer a{color:var(--ink)}
 
       <div class="pull rv">
         <figure id="brandFig">
-          <video id="brandVid" muted loop playsinline preload="none"></video>
+          <img id="brandImg" alt="Пресс-кампания Aldo Coppola 2026" loading="lazy">
           <figcaption>Пресс-кампания Aldo Coppola 2026</figcaption>
         </figure>
         <div>
@@ -571,6 +589,19 @@ footer a{color:var(--ink)}
       <div class="spec"><b class="num"><small style="margin:0 4px 0 0">с</small>1996</b><span>в России</span></div>
       <div class="spec"><b class="num">7</b><span>салонов в Москве и Подмосковье</span></div>
       <div class="spec"><b class="num">40 000</b><span>визитов клиентов за девять месяцев 2026 года</span></div>
+    </div>
+
+    <div class="press">
+      <div class="press-head rv">
+        <div><span class="kicker">Пресс-кампания 2026</span><h3>Лица <em>бренда</em> в&nbsp;этом сезоне</h3></div>
+        <span class="press-note">Нажмите на кадр, чтобы открыть его крупно</span>
+      </div>
+      <figure class="press-film rv" id="pressFilm">
+        <video id="pressVid" muted loop playsinline preload="none"></video>
+        <span class="pf-play" aria-hidden="true"><span></span></span>
+        <figcaption><span>Фильм пресс-кампании 2026</span><span>Смотреть со звуком →</span></figcaption>
+      </figure>
+      <div class="carousel press-photos full-bleed rv" data-key="press"></div>
     </div>
   </div>
 </section>
@@ -1152,7 +1183,8 @@ const CONFIG = {
 const MEDIA_BASE = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
   ? '../aldo-coppola-top-stylist-v2/media/'
   : 'https://2muchdesign-sign.github.io/aldo-coppola-top-stylist-v2/media/';
-const m = p => p ? MEDIA_BASE + p : '';
+// Пути, начинающиеся с media/, — собственная папка этой страницы (пресс-кампания 2026)
+const m = p => !p ? '' : (p.startsWith('media/') ? p : MEDIA_BASE + p);
 
 /* ================================================================
    МЕДИА (пути относительно MEDIA_BASE)
@@ -1161,7 +1193,20 @@ const m = p => p ? MEDIA_BASE + p : '';
    ================================================================ */
 const MEDIA = {
   hero:  { video: 'brand/press-1.mp4', poster: 'brand/press-1.jpg' },
-  brand: { video: 'brand/press-2.mp4', poster: 'brand/press-2.jpg', caption: 'Пресс-кампания Aldo Coppola 2026' },
+  brand: { src: 'media/press/press-01.jpg', caption: 'Пресс-кампания 2026 · Декабрь 2025, San Valentine' },
+  // Пресс-кампания 2026 (блок № 01): фильм + кадры по месяцам. Исходники — Work Claude / 07 Бренд / Press campaign 2026
+  film: { video: 'media/press/campaign-2026-film.mp4', poster: 'media/press/campaign-2026-film.jpg', caption: 'Фильм пресс-кампании Aldo Coppola 2026' },
+  press: [
+    { src: 'media/press/press-01.jpg', caption: 'Декабрь 2025 · San Valentine' },
+    { src: 'media/press/press-02.jpg', caption: 'Февраль — апрель 2026' },
+    { src: 'media/press/press-03.jpg', caption: 'Май 2026' },
+    { src: 'media/press/press-04.jpg', caption: 'Июнь 2026' },
+    { src: 'media/press/press-05.jpg', caption: 'Июль 2026' },
+    { src: 'media/press/press-06.jpg', caption: 'Август 2026' },
+    { src: 'media/press/press-07.jpg', caption: 'Сентябрь 2026' },
+    { src: 'media/press/press-08.jpg', caption: 'Октябрь 2026' },
+    { src: 'media/press/press-09.jpg', caption: 'Ноябрь 2026' }
+  ],
   team: [
     { src: 'team/team-moscow.jpg', caption: 'Команда Aldo Coppola' },
     { src: 'team/team-salon.jpg', caption: 'Команда салона' },
@@ -1299,9 +1344,11 @@ const watch = v => videoObserver ? videoObserver.observe(v) : v.play().catch(()=
   const hv = document.getElementById('heroVid');
   hv.poster = m(MEDIA.hero.poster); hv.src = m(MEDIA.hero.video);
   const p = hv.play(); if (p && p.catch) p.catch(()=>{});
-  const bv = document.getElementById('brandVid');
-  bv.poster = m(MEDIA.brand.poster); bv.src = m(MEDIA.brand.video); watch(bv);
+  document.getElementById('brandImg').src = m(MEDIA.brand.src);
   document.getElementById('brandFig').addEventListener('click', () => openLightbox([MEDIA.brand], 0));
+  const pv = document.getElementById('pressVid');
+  pv.poster = m(MEDIA.film.poster); pv.src = m(MEDIA.film.video); watch(pv);
+  document.getElementById('pressFilm').addEventListener('click', () => { pv.pause(); openLightbox([MEDIA.film], 0); });
 })();
 
 function slideHTML(it, i){
