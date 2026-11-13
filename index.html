@@ -36,10 +36,10 @@ button{font:inherit;color:inherit}
 .brand{font-family:var(--serif);font-size:18px;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
 .brand b{font-weight:700}
 .brand i{color:var(--red);font-weight:400}
-.nav{display:flex;gap:24px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.nav{display:flex;gap:20px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 .nav a{text-decoration:none;color:var(--grey);transition:color .2s}
 .nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:14px 24px;border:0;cursor:pointer;transition:background .25s}
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:var(--red);color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:14px 24px;border:0;cursor:pointer;transition:background .25s}
 .btn:hover{background:var(--red-deep)}
 .btn .arr{transition:transform .25s}
 .btn:hover .arr{transform:translateX(4px)}
@@ -373,7 +373,7 @@ footer a{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ticker-track,.hero-card small i,.tr-play::before{animation:none}.tr-track{scroll-behavior:auto}html{scroll-behavior:auto}}
 
 /* ---------- responsive ---------- */
-@media (max-width:1180px){
+@media (max-width:1320px){
   .nav{display:none}
 }
 @media (max-width:1024px){
