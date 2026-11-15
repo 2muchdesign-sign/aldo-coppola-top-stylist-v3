@@ -238,34 +238,19 @@ section.mist{background:var(--mist)}
 /* ---------- virtual tour ---------- */
 .tour{padding-bottom:0}
 .tour .sec-head{margin-bottom:clamp(32px,4vw,48px)}
-.tr-viewport{overflow:hidden}
-.tr-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:0 max(var(--gut), calc((100vw - var(--wrap)) / 2 + var(--gut)))}
-.tr-track::-webkit-scrollbar{display:none}
-.tr-slide{flex:0 0 min(78vw,980px);scroll-snap-align:center;margin:0;transition:opacity .5s}
-.tr-slide:not(.active){opacity:.45}
-.tr-frame{position:relative;aspect-ratio:16/9;background:var(--ink-2);overflow:hidden;cursor:pointer}
-.tr-frame img,.tr-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.tr-frame img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.tr-frame:hover img{transform:scale(1.04)}
-.tr-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.45));pointer-events:none;transition:opacity .3s}
-.tr-slide.playing .tr-frame::after,.tr-slide.playing .tr-play{opacity:0;pointer-events:none}
-.tr-play{position:absolute;z-index:2;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;border:0;background:var(--red);cursor:pointer;transition:transform .3s,background .3s,opacity .3s;box-shadow:0 20px 40px -12px rgba(0,0,0,.5)}
-.tr-play span{position:absolute;left:50%;top:50%;margin:-13px 0 0 -8px;border-left:24px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent}
-.tr-play::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(255,255,255,.6);animation:ring 2.4s ease-out infinite}
-.tr-frame:hover .tr-play{transform:scale(1.08);background:var(--red-deep)}
-@keyframes ring{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
-.tr-slide figcaption{display:flex;align-items:baseline;gap:18px;padding:18px 0 16px;border-bottom:1px solid var(--line)}
-.tr-idx{font-family:var(--serif);font-style:italic;color:var(--red);font-size:15px}
-.tr-name{font-family:var(--serif);font-size:clamp(26px,3vw,38px);line-height:1}
-.tr-meta{margin-left:auto;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
-.tr-nav{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:32px;flex-wrap:wrap}
-.tr-tabs{display:flex;gap:28px;flex-wrap:wrap}
-.tr-tabs button{background:none;border:0;cursor:pointer;font:500 15px var(--sans);color:var(--grey);padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-.tr-tabs button:hover{color:var(--ink)}
-.tr-tabs button.on{color:var(--ink);border-bottom-color:var(--red)}
-.tr-ctrl{display:flex;align-items:center;gap:10px}
-.tr-count{font-family:var(--serif);font-style:italic;font-size:17px;margin-right:12px}
-
+/* ---------- видеотур: кнопка на главном фото салона + плеер ---------- */
+.tour-btn{position:absolute;z-index:2;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;border:0;background:rgba(255,255,255,.95);color:var(--ink);font:700 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.tour-btn svg{width:16px;height:16px;fill:var(--red);transition:fill .2s}
+.tour-btn:hover,.tour-btn:focus-visible{background:var(--red);color:#fff}
+.tour-btn:hover svg,.tour-btn:focus-visible svg{fill:#fff}
+.slide.has-tour .cap{display:none}
+.tour-dlg{width:min(1100px,calc(100vw - 32px));max-width:none;padding:0;border:0;background:#fff;color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.35)}
+.tour-dlg::backdrop{background:rgba(244,243,241,.94)}
+.tour-dlg .td-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 12px 12px 22px}
+.tour-dlg h2{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2vw,28px);line-height:1.1;margin:0}
+.tour-dlg .td-close{flex:none;width:44px;height:44px;border:0;background:none;font:30px/1 var(--serif);color:var(--ink);cursor:pointer}
+.tour-dlg .td-close:hover{color:var(--red)}
+.tour-dlg video{display:block;width:100%;aspect-ratio:16/9;max-height:calc(100vh - 140px);background:#f4f3f1}
 /* ---------- салоны: блоки сверху вниз ---------- */
 .zone{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:14px;margin:clamp(72px,9vw,120px) 0 40px}
 .zone h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-.02em}
@@ -383,7 +368,7 @@ footer a{color:var(--ink)}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ticker-track,.hero-card small i,.tr-play::before{animation:none}.tr-track{scroll-behavior:auto}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ticker-track,.hero-card small i{animation:none}html{scroll-behavior:auto}}
 
 /* ---------- responsive ---------- */
 @media (max-width:1320px){
@@ -435,14 +420,6 @@ footer a{color:var(--ink)}
   .salon-row,.salon-row.rev{grid-template-columns:1fr;gap:24px;padding:36px 0}
   .salon-row.rev .salon-txt{order:0}
   .salon-txt{position:static}
-  .tr-track{gap:12px}
-  .tr-slide{flex-basis:86vw}
-  .tr-play{width:68px;height:68px;margin:-34px 0 0 -34px}
-  .tr-play span{margin:-10px 0 0 -6px;border-left-width:18px;border-top-width:10px;border-bottom-width:10px}
-  .tr-slide figcaption{flex-wrap:wrap;gap:6px 14px}
-  .tr-meta{margin-left:0;width:100%;font-size:11px}
-  .tr-tabs{display:none}
-  .tr-nav{justify-content:flex-end;margin-top:20px}
   .box{padding:28px 20px}
   .two{grid-template-columns:1fr}
   .calc .res b{font-size:clamp(22px,6.4vw,30px)}
@@ -824,22 +801,11 @@ footer a{color:var(--ink)}
       <div class="sec-no">№ 10<b>Салоны</b></div>
       <div>
         <h2>Семь адресов там, <em>где живут</em> ваши клиенты</h2>
-        <p class="dek">Рублёвка, Новая Рига и центр Москвы. Интерьеры салонов Aldo Coppola создавались вместе с всемирно известными дизайнерами, среди них Филипп Старк и Карим Рашид. Начните с короткой видео-прогулки, а ниже — каждый салон отдельно.</p>
+        <p class="dek">Рублёвка, Новая Рига и центр Москвы. Интерьеры салонов Aldo Coppola создавались вместе с всемирно известными дизайнерами, среди них Филипп Старк и Карим Рашид. У каждого салона — фото интерьеров, а у пяти из них ещё и короткий видеотур.</p>
       </div>
     </div>
-  </div>
-  <div class="tr-viewport rv" id="tour">
-    <div class="tr-track" id="tourTrack"></div>
   </div>
   <div class="wrap">
-    <div class="tr-nav">
-      <div class="tr-tabs" id="tourTabs" role="tablist"></div>
-      <div class="tr-ctrl">
-        <span class="tr-count" id="tourCount">01 / 05</span>
-        <button type="button" class="arrow" id="tourPrev" aria-label="Предыдущий салон" disabled>←</button>
-        <button type="button" class="arrow" id="tourNext" aria-label="Следующий салон">→</button>
-      </div>
-    </div>
 
     <div class="zone rv"><h3>Загородные <em>салоны</em></h3><span class="kicker">Рублёвка и Новая Рига</span></div>
     <div class="conds">
@@ -1333,15 +1299,6 @@ const MEDIA = {
   ]
 };
 
-/* Виртуальный тур: видео-прогулки по салонам */
-const TOUR = [
-  { name: 'Жуковка',       meta: 'Рублёвка · 1:38',          video: 'tour/zhukovka.mp4', poster: 'tour/zhukovka.jpg', alt: 'Салон Aldo Coppola в Жуковке' },
-  { name: 'БЦ ВЭБ РФ',     meta: 'Новинский бульвар · 0:54', video: 'tour/novinsky.mp4', poster: 'tour/novinsky.jpg', alt: 'Салон Aldo Coppola в БЦ ВЭБ РФ' },
-  { name: 'Барвиха',       meta: 'Рублёвка · 1:01',          video: 'tour/barvikha.mp4', poster: 'tour/barvikha.jpg', alt: 'Салон Aldo Coppola в Барвихе' },
-  { name: 'ТЦ BoscoVesna', meta: 'Новый Арбат · 0:34',       video: 'tour/vesna.mp4',    poster: 'tour/vesna.jpg',    alt: 'Салон Aldo Coppola в ТЦ BoscoVesna' },
-  { name: 'Юнимолл',       meta: 'Новая Рига · 0:27',        video: 'tour/unimall.mp4',  poster: 'tour/unimall.jpg',  alt: 'Салон Aldo Coppola в ТК «Юнимолл»' }
-];
-
 /* ---------------------------------------------------------------- */
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pad = n => String(n).padStart(2, '0');
@@ -1493,64 +1450,43 @@ if ('IntersectionObserver' in window){
   document.querySelectorAll('.rv').forEach(el => ro.observe(el));
 } else document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
 
-/* ---------- виртуальный тур по салонам ---------- */
+/* ---------- видеотур: кнопка «Видеотур» на главном фото салона ---------- */
 (function(){
-  const track = document.getElementById('tourTrack'), tabsEl = document.getElementById('tourTabs');
-  track.innerHTML = TOUR.map((t, i) => `<figure class="tr-slide${i ? '' : ' active'}" data-video="${esc(m(t.video))}">
-      <div class="tr-frame"><img src="${esc(m(t.poster))}" alt="${esc(t.alt)}" loading="lazy"><button class="tr-play" type="button" aria-label="Смотреть тур: ${esc(t.name)}"><span></span></button></div>
-      <figcaption><span class="tr-idx">${pad(i+1)}</span><span class="tr-name">${esc(t.name)}</span><span class="tr-meta">${esc(t.meta)}</span></figcaption>
-    </figure>`).join('');
-  tabsEl.innerHTML = TOUR.map((t, i) => `<button type="button" data-i="${i}"${i ? '' : ' class="on"'}>${esc(t.name)}</button>`).join('');
-  const slides = [...track.querySelectorAll('.tr-slide')];
-  const tabs = [...tabsEl.querySelectorAll('button')];
-  const prev = document.getElementById('tourPrev'), next = document.getElementById('tourNext');
-  let cur = 0;
-  const stopAll = except => slides.forEach(s => { const v = s.querySelector('video'); if (v && s !== except) v.pause(); });
-  function setActive(i){
-    cur = i;
-    slides.forEach((s,j) => s.classList.toggle('active', j === i));
-    tabs.forEach((b,j) => b.classList.toggle('on', j === i));
-    document.getElementById('tourCount').textContent = pad(i+1) + ' / ' + pad(slides.length);
-    prev.disabled = i === 0; next.disabled = i === slides.length - 1;
-  }
-  function goTo(i){
-    i = Math.max(0, Math.min(slides.length - 1, i));
-    const s = slides[i];
-    track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.clientWidth) / 2 });
-    setActive(i);
-  }
-  function play(s){
-    stopAll(s);
-    let v = s.querySelector('video');
-    if (!v){
-      v = document.createElement('video');
-      v.src = s.dataset.video; v.controls = true; v.playsInline = true; v.preload = 'auto';
-      v.poster = s.querySelector('img').src;
-      v.addEventListener('pause', () => s.classList.remove('playing'));
-      v.addEventListener('play', () => { stopAll(s); s.classList.add('playing'); });
-      v.addEventListener('ended', () => { s.classList.remove('playing'); const k = slides.indexOf(s); if (k < slides.length - 1) goTo(k + 1); });
-      s.querySelector('.tr-frame').appendChild(v);
-    }
-    v.play().catch(() => {});
-  }
-  slides.forEach((s,i) => s.querySelector('.tr-frame').addEventListener('click', e => {
-    if (e.target.tagName === 'VIDEO') return;
-    if (i !== cur) goTo(i);
-    play(s);
-  }));
-  tabs.forEach((b,i) => b.addEventListener('click', () => goTo(i)));
-  prev.addEventListener('click', () => goTo(cur - 1));
-  next.addEventListener('click', () => goTo(cur + 1));
-  let st;
-  track.addEventListener('scroll', () => { clearTimeout(st); st = setTimeout(() => {
-    const mid = track.scrollLeft + track.clientWidth / 2;
-    let best = 0, bd = 1e9;
-    slides.forEach((s,j) => { const d = Math.abs(s.offsetLeft + s.clientWidth / 2 - mid); if (d < bd){ bd = d; best = j; } });
-    if (best !== cur){ stopAll(null); setActive(best); }
-  }, 80); }, { passive: true });
-  if ('IntersectionObserver' in window)
-    new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) stopAll(null); }), { threshold: 0 }).observe(document.getElementById('tour'));
+  const TOURS = {
+    'salon-barvikha': { file: 'barvikha', title: 'Видеотур: Барвиха Luxury Village' },
+    'salon-zhukovka': { file: 'zhukovka', title: 'Видеотур: Жуковка' },
+    'salon-unimall':  { file: 'unimall',  title: 'Видеотур: ТК «Юнимолл»' },
+    'salon-novinsky': { file: 'novinsky', title: 'Видеотур: БЦ ВЭБ РФ' },
+    'salon-vesna':    { file: 'vesna',    title: 'Видеотур: ТЦ BoscoVesna' }
+  };
+  const src = f => m('tour/' + f);
+  const dlg = document.createElement('dialog');
+  dlg.className = 'tour-dlg'; dlg.setAttribute('aria-labelledby', 'tourDlgTitle');
+  dlg.innerHTML = '<div class="td-head"><h2 id="tourDlgTitle">Видеотур</h2><button class="td-close" type="button" aria-label="Закрыть видеотур">×</button></div><video controls playsinline preload="none"></video>';
+  document.body.appendChild(dlg);
+  const tv = dlg.querySelector('video'), tt = dlg.querySelector('h2');
+  const close = () => dlg.close ? dlg.close() : dlg.removeAttribute('open');
+  dlg.querySelector('.td-close').addEventListener('click', close);
+  dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
+  dlg.addEventListener('close', () => { tv.pause(); tv.removeAttribute('src'); tv.load(); });
+  document.querySelectorAll('.shots').forEach(el => {
+    const t = TOURS[el.dataset.key], first = el.querySelector('.slide');
+    if (!t || !first) return;
+    first.classList.add('has-tour');
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'tour-btn'; b.setAttribute('aria-haspopup', 'dialog');
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Видеотур';
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      tt.textContent = t.title;
+      tv.poster = src(t.file + '.jpg'); tv.src = src(t.file + '.mp4');
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+      const p = tv.play(); if (p && p.catch) p.catch(() => {});
+    });
+    first.appendChild(b);
+  });
 })();
+
 </script>
 </body>
 </html>
